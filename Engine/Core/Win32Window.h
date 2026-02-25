@@ -1,39 +1,44 @@
-ï»¿#pragma once
+#pragma once
+
 #include <Windows.h>
 #include <string>
 #include <stdint.h>
 
 namespace Craft
 {
-    // WIN32 APIë¡œ ìƒì„±í•˜ëŠ” ì°½ í´ë˜ìŠ¤.
-    class Win32Window
-    {
-    public:
-        Win32Window(uint32_t width = 1280, uint32_t height = 800, HINSTANCE instance = nullptr, WNDPROC messageProcedure = nullptr);
-        ~Win32Window();
+	// WIN32 API·Î »ı¼ºÇÏ´Â Ã¢ Å¬·¡½º.
+	class Win32Window
+	{
+	public:
+		Win32Window(
+			uint32_t width = 1280,
+			uint32_t height = 800,
+			HINSTANCE instance = nullptr,
+			WNDPROC messageProcedure = nullptr
+		);
+		~Win32Window();
 
-        bool Initialize();
-        // Getter.
-        inline uint32_t Width() const { return width; }
-        inline uint32_t Height() const { return height; }
-        inline HWND Handle() const { return handle; }
+		// ÃÊ±âÈ­ ÇÔ¼ö.
+		bool Initialize();
 
-    private:
-        // Title
-        std::wstring title;
+		// Getter.
+		inline uint32_t Width() const { return width; }
+		inline uint32_t Height() const { return height; }
+		inline HWND Handle() const { return handle; }
 
-        // ì°½ ë“¤ë¡ í•  ë•Œ ì‚¬ìš©í•  í´ë˜ìŠ¤ ì´ë¦„
-        std::wstring className = L"Craft Engine Class";
-
-        //size
-        uint32_t width = 0;
-        uint32_t height = 0;
-
-        HWND handle = nullptr;
-
-        HINSTANCE instance = nullptr;
-
-        WNDPROC messageProcedure = nullptr;
-    };
+	private:
+		// Å¸ÀÌÆ².
+		std::wstring title;
+		// Ã¢ µî·ÏÇÒ ¶§ »ç¿ëÇÒ Å¬·¡½º ÀÌ¸§.
+		std::wstring className = L"Craft Engine Class";
+		// Å©±â.
+		uint32_t width = 0;
+		uint32_t height = 0;
+		// Ã¢ °´Ã¼ (ÇÚµé).
+		HWND handle = nullptr;
+		// ÇÁ·Î±×·¥ Æ÷ÀÎÅÍ(ÀÎ½ºÅÏ½º).
+		HINSTANCE instance = nullptr;
+		// ¸Ş½ÃÁö Ã³¸® ÇÔ¼ö Æ÷ÀÎÅÍ.
+		WNDPROC messageProcedure = nullptr;
+	};
 }
-
